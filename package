@@ -1,0 +1,12 @@
+#!/bin/bash
+
+set -exu
+
+BASE_DIR=$(cd $(dirname $0) && pwd)
+OUTPUT_DIR=${BASE_DIR}/target
+
+mkdir -p ${OUTPUT_DIR}
+
+docker build -t fluentd-forwarder ${BASE_DIR}
+docker run -v ${OUTPUT_DIR}:/data/ fluentd-forwarder \
+  cp /go/bin/fluentd_forwarder /data/

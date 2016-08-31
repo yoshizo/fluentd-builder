@@ -1,0 +1,5 @@
+#!/bin/bash
+
+set -exu
+
+docker run -it registry.docker.workslan/
